@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        UNUserNotificationCenter.current().delegate = self
+        
         UITabBar.appearance().barTintColor = UIColor.themeGreenColor
         UITabBar.appearance().tintColor = UIColor.white
         
@@ -109,7 +111,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        //1
+        let userInfo = response.notification.request.content.userInfo
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        
+        //2
+        if let newsItem = NewsItem.makeNewsItem(aps) {
+            (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
+            
+            //3
+            if response.actionIdentifier == viewActionIdentifier,
+                let url = URL(string: newsItem.link) {
+                let safari = SFSafariViewController(url: url)
+                window?.rootViewController?.present(safari, animated: true, completion: nil)
+            }
+        }
+        
+        //4
+        completionHandler()
+    }
+}
 
 
 
