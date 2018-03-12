@@ -29,6 +29,7 @@
  */
 import UIKit
 import SafariServices
+import UserNotifications
 
 fileprivate let viewActionIdentifier = "VIEW_IDENTIFIER"
 fileprivate let newsCategoryIdentifier = "NEWS_CATEGORY"
