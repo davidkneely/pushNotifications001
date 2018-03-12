@@ -36,25 +36,32 @@ fileprivate let newsCategoryIdentifier = "NEWS_CATEGORY"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  
-  var window: UIWindow?
-  
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
-    UITabBar.appearance().barTintColor = UIColor.themeGreenColor
-    UITabBar.appearance().tintColor = UIColor.white
+    var window: UIWindow?
     
-    return true
-  }
-   
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        UITabBar.appearance().barTintColor = UIColor.themeGreenColor
+        UITabBar.appearance().tintColor = UIColor.white
+        
+        registerForPushNotifications()
+        
+        return true
+    }
+    
     func registerForPushNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
             print("Permission granted: \(granted)")
         }
     }
-
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+        }
+    }
 }
 
 
