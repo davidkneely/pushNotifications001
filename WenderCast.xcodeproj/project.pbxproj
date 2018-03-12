@@ -355,7 +355,7 @@
 				DEVELOPMENT_TEAM = EPF99BXA3K;
 				INFOPLIST_FILE = WenderCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.WenderCast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.visionrunner.pushNotifications001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -371,7 +371,7 @@
 				DEVELOPMENT_TEAM = EPF99BXA3K;
 				INFOPLIST_FILE = WenderCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.WenderCast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.visionrunner.pushNotifications001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
