@@ -66,6 +66,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Permission granted: \(granted)")
             
             guard granted else {return}
+            
+            //1
+            let viewAction = UNNotificationAction(identifier: viewActionIdentifier, title: "View", options: [.foreground])
+            //2
+            let newsCategory = UNNotificationCategory(identifier: newsCategoryIdentifier, actions: [viewAction], intentIdentifiers: [], options: [])
+            
+            //3
+            UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+            
             self.getNotificationSettings()
         }
     }
